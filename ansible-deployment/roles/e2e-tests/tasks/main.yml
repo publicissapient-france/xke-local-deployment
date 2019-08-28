@@ -1,0 +1,13 @@
+---
+- name: "ensure directory exist"
+  file:
+    path: "/project/test"
+    state: directory
+  when: inventory_hostname == 'xke-local-development_spark-worker_1'
+
+- name: "deploy script test in directory"
+  template:
+    src: "checkFile.sh"
+    dest: "/project/test/checkFile.sh"
+    mode: 0775
+  when: inventory_hostname == 'xke-local-development_spark-worker_1'
